@@ -1,0 +1,217 @@
+{
+  "agents": [
+    {
+      "agent_id": "ceo_quant",
+      "department": "quant",
+      "open_items": 0,
+      "registry_status": "verified",
+      "status": "idle",
+      "version": "1.0.0"
+    },
+    {
+      "agent_id": "ceo_selfcare",
+      "department": "selfcare",
+      "open_items": 0,
+      "registry_status": "verified",
+      "status": "idle",
+      "version": "1.0.0"
+    },
+    {
+      "agent_id": "ceo_trading",
+      "department": "trading",
+      "open_items": 0,
+      "registry_status": "verified",
+      "status": "idle",
+      "version": "1.0.0"
+    },
+    {
+      "agent_id": "ceo_werkstatt",
+      "department": "werkstatt",
+      "open_items": 0,
+      "registry_status": "verified",
+      "status": "idle",
+      "version": "1.0.0"
+    },
+    {
+      "agent_id": "day_planner",
+      "department": "selfcare",
+      "open_items": 0,
+      "registry_status": "verified",
+      "status": "idle",
+      "version": "0.3.0"
+    },
+    {
+      "agent_id": "guardian",
+      "department": "guardian",
+      "open_items": 0,
+      "registry_status": "verified",
+      "status": "idle",
+      "version": "1.0.0"
+    },
+    {
+      "agent_id": "mock",
+      "department": "werkstatt",
+      "open_items": 0,
+      "registry_status": "verified",
+      "status": "idle",
+      "version": "1.0.0"
+    },
+    {
+      "agent_id": "mock_consumer",
+      "department": "werkstatt",
+      "open_items": 1,
+      "registry_status": "verified",
+      "status": "waiting",
+      "version": "1.0.0"
+    },
+    {
+      "agent_id": "mock_producer",
+      "department": "werkstatt",
+      "open_items": 1,
+      "registry_status": "verified",
+      "status": "working",
+      "version": "1.0.0"
+    },
+    {
+      "agent_id": "trade_reviewer",
+      "department": "trading",
+      "open_items": 0,
+      "registry_status": "verified",
+      "status": "idle",
+      "version": "0.3.0"
+    }
+  ],
+  "as_of": "2026-10-07T17:03:09.209755Z",
+  "attention": [],
+  "org": [
+    {
+      "agents": [],
+      "department": "hq",
+      "title": "HQ"
+    },
+    {
+      "agents": [
+        "ceo_quant"
+      ],
+      "department": "quant",
+      "title": "Quant Engine"
+    },
+    {
+      "agents": [
+        "ceo_selfcare",
+        "day_planner"
+      ],
+      "department": "selfcare",
+      "title": "Selfcare"
+    },
+    {
+      "agents": [
+        "ceo_werkstatt",
+        "mock",
+        "mock_consumer",
+        "mock_producer"
+      ],
+      "department": "werkstatt",
+      "title": "IT"
+    },
+    {
+      "agents": [
+        "ceo_trading",
+        "trade_reviewer"
+      ],
+      "department": "trading",
+      "title": "Trading Desk"
+    },
+    {
+      "agents": [
+        "guardian"
+      ],
+      "department": "guardian",
+      "title": "Guardian"
+    }
+  ],
+  "runtime": {
+    "kill_switch": false,
+    "target": "github-linux"
+  },
+  "schema": "hq.runtime_state/1",
+  "source": {
+    "event_count": 8,
+    "last_event_at": "2026-10-07T17:03:09.209755Z",
+    "last_event_id": 8,
+    "store_schema_version": 3
+  },
+  "tasks": [],
+  "workflows": [
+    {
+      "approved": false,
+      "created_at": "2026-10-07T17:03:09.190445Z",
+      "nodes": [
+        {
+          "agent_id": "mock_producer",
+          "attempts": 1,
+          "bindings": {},
+          "depends_on": [],
+          "effective": "running",
+          "input_sha256": "5e99d76e946ff987af1402a9ef575fb4fbf3d2bc668d8be30ad48aac48cc3878",
+          "max_attempts": 2,
+          "node_id": "produce",
+          "retries": 0,
+          "run": {
+            "artifacts": [],
+            "attempt": 1,
+            "created_at": "2026-10-07T17:03:09.209755Z",
+            "error": null,
+            "evidence": {},
+            "lease": "active",
+            "run_id": "wf-mock-pipeline-2026-10-07__produce.a1",
+            "status": "running",
+            "updated_at": "2026-10-07T17:03:09.209755Z"
+          },
+          "status": "running",
+          "task_id": "wf-mock-pipeline-2026-10-07__produce",
+          "task_type": "mock_produce",
+          "updated_at": "2026-10-07T17:03:09.209755Z"
+        },
+        {
+          "agent_id": "mock_consumer",
+          "attempts": 0,
+          "bindings": {
+            "upstream_value": "upstream.produce.output.value"
+          },
+          "depends_on": [
+            "produce"
+          ],
+          "effective": "waiting",
+          "input_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "max_attempts": 2,
+          "node_id": "consume",
+          "retries": 0,
+          "run": null,
+          "status": "queued",
+          "task_id": "wf-mock-pipeline-2026-10-07__consume",
+          "task_type": "mock_consume",
+          "updated_at": "2026-10-07T17:03:09.190445Z"
+        }
+      ],
+      "objective": "Beweis der Workflow-Infrastruktur: Knoten consume erhaelt den Output von produce ausschliesslich ueber eine deklarierte Input-Bindung. Ohne Claude, ohne Vault, ohne persoenliche Daten.",
+      "origin": {
+        "kind": "trigger",
+        "logical_date": "2026-10-07",
+        "trigger_id": "mock-pipeline"
+      },
+      "outputs": {
+        "received": "consume.output.received",
+        "source_verified": "consume.output.source_verified"
+      },
+      "params_sha256": "5e99d76e946ff987af1402a9ef575fb4fbf3d2bc668d8be30ad48aac48cc3878",
+      "parent_task": null,
+      "plan_sha256": "856e335fe53134d805686b7ee24ea0d7dcc24c8bc4c7406a463dded7ca3de2ff",
+      "status": "planned",
+      "template_id": "mock_pipeline",
+      "template_version": "1.0.0",
+      "updated_at": "2026-10-07T17:03:09.190445Z",
+      "workflow_id": "wf-mock-pipeline-2026-10-07"
+    }
+  ]
+}
