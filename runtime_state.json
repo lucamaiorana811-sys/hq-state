@@ -139,7 +139,7 @@
     "event_count": 41,
     "last_event_at": "2026-10-07T17:46:20.357469Z",
     "last_event_id": 41,
-    "store_schema_version": 3
+    "store_schema_version": 4
   },
   "tasks": [],
   "workflows": [

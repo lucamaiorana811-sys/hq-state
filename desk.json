@@ -1,0 +1,12 @@
+{
+  "desk": [],
+  "feedback": {
+    "down": 0,
+    "open": 0,
+    "total": 0,
+    "up": 0
+  },
+  "inputs": [],
+  "mailbox": [],
+  "schema": "hq.desk/1"
+}
