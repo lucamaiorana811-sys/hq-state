@@ -59,9 +59,9 @@
     {
       "agent_id": "mock_consumer",
       "department": "werkstatt",
-      "open_items": 1,
+      "open_items": 0,
       "registry_status": "verified",
-      "status": "working",
+      "status": "completed",
       "version": "1.0.0"
     },
     {
@@ -81,7 +81,7 @@
       "version": "0.3.0"
     }
   ],
-  "as_of": "2026-10-09T17:28:20.227767Z",
+  "as_of": "2026-10-09T17:28:21.852425Z",
   "attention": [],
   "org": [
     {
@@ -136,9 +136,9 @@
   },
   "schema": "hq.runtime_state/1",
   "source": {
-    "event_count": 108,
-    "last_event_at": "2026-10-09T17:28:20.227767Z",
-    "last_event_id": 108,
+    "event_count": 122,
+    "last_event_at": "2026-10-09T17:28:21.852425Z",
+    "last_event_id": 122,
     "store_schema_version": 4
   },
   "tasks": [],
@@ -438,26 +438,50 @@
           "depends_on": [
             "produce"
           ],
-          "effective": "running",
+          "effective": "succeeded",
           "input_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
           "max_attempts": 2,
           "node_id": "consume",
           "retries": 0,
           "run": {
-            "artifacts": [],
+            "artifacts": [
+              {
+                "location": "runs/staging/wf-mock-pipeline-2026-10-09__consume.a1/staging.json",
+                "name": "staging.json",
+                "sha256": "d8289dce37e85be63306d440eaf1ee721be18b0dcbd1a99b5fc554ea75dfa13b"
+              },
+              {
+                "location": "runs/staging/wf-mock-pipeline-2026-10-09__consume.a1/verification.json",
+                "name": "verification.json",
+                "sha256": "551664f82a9e523cbfacf1881192493a69d90be31bc3531e1bd9088cdd7bc16b"
+              }
+            ],
             "attempt": 1,
             "created_at": "2026-10-09T17:28:20.227767Z",
             "error": null,
-            "evidence": {},
-            "lease": "active",
+            "evidence": {
+              "bindings": {
+                "upstream_value": {
+                  "source": "upstream.produce.output.value",
+                  "upstream_output_sha256": "189a1b0459a67618af6b35961c93b27b73b421fd198c2901e87de920ef5bc5bd",
+                  "upstream_run_id": "wf-mock-pipeline-2026-10-09__produce.a1",
+                  "value_sha256": "5aa762ae383fbb727af3c7a36d4940a5b8c40a989452d2304fc958ff3f354e7a"
+                }
+              },
+              "context_pack_sha256": "4f12eb08d45231fbcdddf19cbb69c17821ce8422b1363eb312be4720dc01a6d8",
+              "execution_contract_sha256": "5c22ea0331e201a8be12bdc0b25e75dadbd5fc69ab24931aa50c2d35ae2e6282",
+              "output_sha256": "d2672c7f207ba4f3aaba3e835d835bf23ed303a389339542fe1194d6eef00d59",
+              "verification_sha256": "551664f82a9e523cbfacf1881192493a69d90be31bc3531e1bd9088cdd7bc16b"
+            },
+            "lease": "released",
             "run_id": "wf-mock-pipeline-2026-10-09__consume.a1",
-            "status": "running",
-            "updated_at": "2026-10-09T17:28:20.227767Z"
+            "status": "committed",
+            "updated_at": "2026-10-09T17:28:21.850579Z"
           },
-          "status": "running",
+          "status": "succeeded",
           "task_id": "wf-mock-pipeline-2026-10-09__consume",
           "task_type": "mock_consume",
-          "updated_at": "2026-10-09T17:28:20.227767Z"
+          "updated_at": "2026-10-09T17:28:21.850579Z"
         }
       ],
       "objective": "Beweis der Workflow-Infrastruktur: Knoten consume erhaelt den Output von produce ausschliesslich ueber eine deklarierte Input-Bindung. Ohne Claude, ohne Vault, ohne persoenliche Daten.",
