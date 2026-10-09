@@ -59,17 +59,17 @@
     {
       "agent_id": "mock_consumer",
       "department": "werkstatt",
-      "open_items": 0,
+      "open_items": 1,
       "registry_status": "verified",
-      "status": "completed",
+      "status": "waiting",
       "version": "1.0.0"
     },
     {
       "agent_id": "mock_producer",
       "department": "werkstatt",
-      "open_items": 0,
+      "open_items": 1,
       "registry_status": "verified",
-      "status": "completed",
+      "status": "working",
       "version": "1.0.0"
     },
     {
@@ -81,7 +81,7 @@
       "version": "0.3.0"
     }
   ],
-  "as_of": "2026-10-08T17:54:33.965062Z",
+  "as_of": "2026-10-09T11:15:59.254727Z",
   "attention": [],
   "org": [
     {
@@ -136,9 +136,9 @@
   },
   "schema": "hq.runtime_state/1",
   "source": {
-    "event_count": 82,
-    "last_event_at": "2026-10-08T17:54:33.965062Z",
-    "last_event_id": 82,
+    "event_count": 90,
+    "last_event_at": "2026-10-09T11:15:59.254727Z",
+    "last_event_id": 90,
     "store_schema_version": 4
   },
   "tasks": [],
@@ -382,6 +382,76 @@
       "template_version": "1.0.0",
       "updated_at": "2026-10-08T17:54:33.965062Z",
       "workflow_id": "wf-mock-pipeline-2026-10-08"
+    },
+    {
+      "approved": false,
+      "created_at": "2026-10-09T11:15:59.242036Z",
+      "nodes": [
+        {
+          "agent_id": "mock_producer",
+          "attempts": 1,
+          "bindings": {},
+          "depends_on": [],
+          "effective": "running",
+          "input_sha256": "5e99d76e946ff987af1402a9ef575fb4fbf3d2bc668d8be30ad48aac48cc3878",
+          "max_attempts": 2,
+          "node_id": "produce",
+          "retries": 0,
+          "run": {
+            "artifacts": [],
+            "attempt": 1,
+            "created_at": "2026-10-09T11:15:59.254727Z",
+            "error": null,
+            "evidence": {},
+            "lease": "active",
+            "run_id": "wf-mock-pipeline-2026-10-09__produce.a1",
+            "status": "running",
+            "updated_at": "2026-10-09T11:15:59.254727Z"
+          },
+          "status": "running",
+          "task_id": "wf-mock-pipeline-2026-10-09__produce",
+          "task_type": "mock_produce",
+          "updated_at": "2026-10-09T11:15:59.254727Z"
+        },
+        {
+          "agent_id": "mock_consumer",
+          "attempts": 0,
+          "bindings": {
+            "upstream_value": "upstream.produce.output.value"
+          },
+          "depends_on": [
+            "produce"
+          ],
+          "effective": "waiting",
+          "input_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "max_attempts": 2,
+          "node_id": "consume",
+          "retries": 0,
+          "run": null,
+          "status": "queued",
+          "task_id": "wf-mock-pipeline-2026-10-09__consume",
+          "task_type": "mock_consume",
+          "updated_at": "2026-10-09T11:15:59.242036Z"
+        }
+      ],
+      "objective": "Beweis der Workflow-Infrastruktur: Knoten consume erhaelt den Output von produce ausschliesslich ueber eine deklarierte Input-Bindung. Ohne Claude, ohne Vault, ohne persoenliche Daten.",
+      "origin": {
+        "kind": "trigger",
+        "logical_date": "2026-10-09",
+        "trigger_id": "mock-pipeline"
+      },
+      "outputs": {
+        "received": "consume.output.received",
+        "source_verified": "consume.output.source_verified"
+      },
+      "params_sha256": "5e99d76e946ff987af1402a9ef575fb4fbf3d2bc668d8be30ad48aac48cc3878",
+      "parent_task": null,
+      "plan_sha256": "b9fdae0fc560b9ce47688179a928114b1bfeffeddfebda558fc65190f47ada6a",
+      "status": "planned",
+      "template_id": "mock_pipeline",
+      "template_version": "1.0.0",
+      "updated_at": "2026-10-09T11:15:59.242036Z",
+      "workflow_id": "wf-mock-pipeline-2026-10-09"
     }
   ]
 }
