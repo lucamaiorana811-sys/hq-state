@@ -81,7 +81,7 @@
       "version": "0.3.0"
     }
   ],
-  "as_of": "2026-10-20T09:21:43.911852Z",
+  "as_of": "2026-10-20T09:21:45.529420Z",
   "attention": [],
   "org": [
     {
@@ -136,9 +136,9 @@
   },
   "schema": "hq.runtime_state/1",
   "source": {
-    "event_count": 554,
-    "last_event_at": "2026-10-20T09:21:43.911852Z",
-    "last_event_id": 554,
+    "event_count": 555,
+    "last_event_at": "2026-10-20T09:21:45.529420Z",
+    "last_event_id": 555,
     "store_schema_version": 4
   },
   "tasks": [],
@@ -1783,10 +1783,10 @@
       "params_sha256": "5e99d76e946ff987af1402a9ef575fb4fbf3d2bc668d8be30ad48aac48cc3878",
       "parent_task": null,
       "plan_sha256": "e54a7efe94635e53e62437fb9d4a4c157d443a87af1f516c1423ae9d56e1f2d4",
-      "status": "planned",
+      "status": "running",
       "template_id": "mock_pipeline",
       "template_version": "1.0.0",
-      "updated_at": "2026-10-20T09:21:41.759663Z",
+      "updated_at": "2026-10-20T09:21:45.529420Z",
       "workflow_id": "wf-mock-pipeline-2026-10-20"
     }
   ]
