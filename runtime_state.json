@@ -61,7 +61,7 @@
       "department": "werkstatt",
       "open_items": 1,
       "registry_status": "verified",
-      "status": "waiting",
+      "status": "working",
       "version": "1.0.0"
     },
     {
@@ -81,7 +81,7 @@
       "version": "0.3.0"
     }
   ],
-  "as_of": "2026-10-21T09:18:07.646816Z",
+  "as_of": "2026-10-21T14:32:30.622605Z",
   "attention": [],
   "org": [
     {
@@ -136,9 +136,9 @@
   },
   "schema": "hq.runtime_state/1",
   "source": {
-    "event_count": 596,
-    "last_event_at": "2026-10-21T09:18:07.646816Z",
-    "last_event_id": 596,
+    "event_count": 600,
+    "last_event_at": "2026-10-21T14:32:30.622605Z",
+    "last_event_id": 600,
     "store_schema_version": 4
   },
   "tasks": [],
@@ -1871,23 +1871,33 @@
         },
         {
           "agent_id": "mock_consumer",
-          "attempts": 0,
+          "attempts": 1,
           "bindings": {
             "upstream_value": "upstream.produce.output.value"
           },
           "depends_on": [
             "produce"
           ],
-          "effective": "ready",
+          "effective": "running",
           "input_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
           "max_attempts": 2,
           "node_id": "consume",
           "retries": 0,
-          "run": null,
-          "status": "queued",
+          "run": {
+            "artifacts": [],
+            "attempt": 1,
+            "created_at": "2026-10-21T14:32:30.622605Z",
+            "error": null,
+            "evidence": {},
+            "lease": "active",
+            "run_id": "wf-mock-pipeline-2026-10-21__consume.a1",
+            "status": "running",
+            "updated_at": "2026-10-21T14:32:30.622605Z"
+          },
+          "status": "running",
           "task_id": "wf-mock-pipeline-2026-10-21__consume",
           "task_type": "mock_consume",
-          "updated_at": "2026-10-21T09:18:04.296292Z"
+          "updated_at": "2026-10-21T14:32:30.622605Z"
         }
       ],
       "objective": "Beweis der Workflow-Infrastruktur: Knoten consume erhaelt den Output von produce ausschliesslich ueber eine deklarierte Input-Bindung. Ohne Claude, ohne Vault, ohne persoenliche Daten.",
