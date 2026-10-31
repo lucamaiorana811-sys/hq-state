@@ -67,9 +67,9 @@
     {
       "agent_id": "mock_producer",
       "department": "werkstatt",
-      "open_items": 1,
+      "open_items": 0,
       "registry_status": "verified",
-      "status": "working",
+      "status": "completed",
       "version": "1.0.0"
     },
     {
@@ -81,7 +81,7 @@
       "version": "0.3.0"
     }
   ],
-  "as_of": "2026-10-31T10:19:02.228294Z",
+  "as_of": "2026-10-31T10:19:04.393090Z",
   "attention": [],
   "org": [
     {
@@ -136,9 +136,9 @@
   },
   "schema": "hq.runtime_state/1",
   "source": {
-    "event_count": 992,
-    "last_event_at": "2026-10-31T10:19:02.228294Z",
-    "last_event_id": 992,
+    "event_count": 1005,
+    "last_event_at": "2026-10-31T10:19:04.393090Z",
+    "last_event_id": 1005,
     "store_schema_version": 4
   },
   "tasks": [],
@@ -3032,26 +3032,42 @@
           "attempts": 1,
           "bindings": {},
           "depends_on": [],
-          "effective": "running",
+          "effective": "succeeded",
           "input_sha256": "5e99d76e946ff987af1402a9ef575fb4fbf3d2bc668d8be30ad48aac48cc3878",
           "max_attempts": 2,
           "node_id": "produce",
           "retries": 0,
           "run": {
-            "artifacts": [],
+            "artifacts": [
+              {
+                "location": "runs/staging/wf-mock-pipeline-2026-10-31__produce.a1/staging.json",
+                "name": "staging.json",
+                "sha256": "a4907b93b88ee016868128348c9e65a536060dae19693db95a2a37f5a134812c"
+              },
+              {
+                "location": "runs/staging/wf-mock-pipeline-2026-10-31__produce.a1/verification.json",
+                "name": "verification.json",
+                "sha256": "7a5259f170a52417057b15c28687d7e292d4d4da53f046754c8e3883737d68e1"
+              }
+            ],
             "attempt": 1,
             "created_at": "2026-10-31T10:19:02.228294Z",
             "error": null,
-            "evidence": {},
-            "lease": "active",
+            "evidence": {
+              "context_pack_sha256": "c48158a35cb4267f73efe7e6ca6e990a8c5301564864f788da0c202a38cfc229",
+              "execution_contract_sha256": "a0a1801db215b65303ab8d794f725432704b0d93cb9984d9b77eaabee6485cc2",
+              "output_sha256": "189a1b0459a67618af6b35961c93b27b73b421fd198c2901e87de920ef5bc5bd",
+              "verification_sha256": "7a5259f170a52417057b15c28687d7e292d4d4da53f046754c8e3883737d68e1"
+            },
+            "lease": "released",
             "run_id": "wf-mock-pipeline-2026-10-31__produce.a1",
-            "status": "running",
-            "updated_at": "2026-10-31T10:19:02.228294Z"
+            "status": "committed",
+            "updated_at": "2026-10-31T10:19:04.386121Z"
           },
-          "status": "running",
+          "status": "succeeded",
           "task_id": "wf-mock-pipeline-2026-10-31__produce",
           "task_type": "mock_produce",
-          "updated_at": "2026-10-31T10:19:02.228294Z"
+          "updated_at": "2026-10-31T10:19:04.386121Z"
         },
         {
           "agent_id": "mock_consumer",
@@ -3062,7 +3078,7 @@
           "depends_on": [
             "produce"
           ],
-          "effective": "waiting",
+          "effective": "ready",
           "input_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
           "max_attempts": 2,
           "node_id": "consume",
