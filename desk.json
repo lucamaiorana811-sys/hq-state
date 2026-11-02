@@ -8,5 +8,35 @@
   },
   "inputs": [],
   "mailbox": [],
-  "schema": "hq.desk/1"
+  "schema": "hq.desk/1",
+  "usage": {
+    "as_of": "2026-11-02T12:15:39Z",
+    "essential_agents": [
+      "day_planner"
+    ],
+    "full": [],
+    "paused_until": null,
+    "warn": false,
+    "warn_at": 0.8,
+    "windows": [
+      {
+        "hours": 5,
+        "max_usd": 2.0,
+        "name": "5h",
+        "runs": 0,
+        "runs_without_cost": 0,
+        "share": 0.0,
+        "used_usd": 0
+      },
+      {
+        "hours": 168,
+        "max_usd": 15.0,
+        "name": "7d",
+        "runs": 0,
+        "runs_without_cost": 0,
+        "share": 0.0,
+        "used_usd": 0
+      }
+    ]
+  }
 }
