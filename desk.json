@@ -10,7 +10,7 @@
   "mailbox": [],
   "schema": "hq.desk/1",
   "usage": {
-    "as_of": "2026-11-04T19:40:49Z",
+    "as_of": "2026-11-05T00:33:07Z",
     "essential_agents": [
       "day_planner"
     ],
